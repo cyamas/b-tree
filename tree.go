@@ -53,7 +53,7 @@ func (b *BTree) insertAtRoot(newKey int) {
 	b.addNewRoot(newKey)
 }
 
-func (b *BTree) delete(key int) error {
+func (b *BTree) Delete(key int) error {
 	root := b.root
 	idx, found := root.indexForDeletion(key)
 

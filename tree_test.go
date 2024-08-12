@@ -14,7 +14,7 @@ func TestUpdateStream(t *testing.T) {
 	for i := range numKeys {
 		coin := rand.Float64()
 		if coin < 0.5 {
-			tree.delete(deleteKeys[i])
+			tree.Delete(deleteKeys[i])
 			if !treeIsValid(tree) {
 				t.Fatalf("Invalid Tree. Error while deleting key: %d", deleteKeys[i])
 			}
@@ -83,12 +83,12 @@ func TestDeleteKey(t *testing.T) {
 	tree13 := createAscendingTestTree(53)
 	// Tests consecutive non-leaf key deletions with starting tree depth of 4
 	tree14 := createAscendingTestTree(53)
-	tree14.delete(180)
+	tree14.Delete(180)
 	// Same as test 14 but performs deletions on right side of root node
 	tree15 := createAscendingTestTree(53)
-	tree15.delete(360)
+	tree15.Delete(360)
 	tree16 := createAscendingTestTree(53)
-	tree16.delete(180)
+	tree16.Delete(180)
 	tree16.Insert(180)
 	// Tests Deletion from trees not created in Ascending Order
 	tree17 := createAscendingTestTree(14)
@@ -123,7 +123,7 @@ func TestDeleteKey(t *testing.T) {
 		{tree20, 270},
 	}
 	for _, tt := range tests {
-		err := tt.tree.delete(tt.key)
+		err := tt.tree.Delete(tt.key)
 		if err != nil {
 			if err.Error() != "key does not exist" {
 				t.Fatalf("Error should say key does not exist")
@@ -194,7 +194,7 @@ func TestTreeIsValid(t *testing.T) {
 	}
 }
 
-func TestkeyExists(t *testing.T) {
+func TestKeyExists(t *testing.T) {
 	tree1 := createAscendingTestTree(52)
 	tree1.Insert(26)
 	tree2 := createDescendingTestTree(52)
